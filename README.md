@@ -1,6 +1,17 @@
 # TTY::Which
+[![Gem Version](https://badge.fury.io/rb/tty-which.svg)][gem]
+[![Build Status](https://secure.travis-ci.org/peter-murach/tty-which.svg?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/peter-murach/tty-which/badges/gpa.svg)][codeclimate]
+[![Coverage Status](https://coveralls.io/repos/peter-murach/tty-which/badge.svg?branch=master)][coveralls]
+[![Inline docs](http://inch-ci.org/github/peter-murach/tty-which.svg?branch=master)][inchpages]
 
-> Platform independent implementation of Unix `which` command that searches executables in the path.
+[gem]: http://badge.fury.io/rb/tty-which
+[travis]: http://travis-ci.org/peter-murach/tty-which
+[codeclimate]: https://codeclimate.com/github/peter-murach/tty-which
+[coveralls]: https://coveralls.io/r/peter-murach/tty-which
+[inchpages]: http://inch-ci.org/github/peter-murach/tty-which
+
+> Platform independent implementation of Unix `which` utility that searches for executable file in the path.
 
 ## Installation
 
