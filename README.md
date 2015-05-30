@@ -13,6 +13,8 @@
 
 > Platform independent implementation of Unix `which` utility that searches for executable file in the path.
 
+**TTY::Which** provides cross-platform executables search component for [TTY](https://github.com/peter-murach/tty) toolkit.
+
 ## Installation
 
 Add this line to your application's Gemfile:
