@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = [""]
   spec.summary       = %q{Platform independent implementation of Unix which command.}
   spec.description   = %q{Platform independent implementation of Unix which command.}
-  spec.homepage      = "http://peter-murach.github.io/tty/"
+  spec.homepage      = "http://piotrmurach.github.io/tty/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

@@ -1,19 +1,19 @@
 # TTY::Which
 [![Gem Version](https://badge.fury.io/rb/tty-which.svg)][gem]
-[![Build Status](https://secure.travis-ci.org/peter-murach/tty-which.svg?branch=master)][travis]
-[![Code Climate](https://codeclimate.com/github/peter-murach/tty-which/badges/gpa.svg)][codeclimate]
-[![Coverage Status](https://coveralls.io/repos/peter-murach/tty-which/badge.svg?branch=master)][coveralls]
-[![Inline docs](http://inch-ci.org/github/peter-murach/tty-which.svg?branch=master)][inchpages]
+[![Build Status](https://secure.travis-ci.org/piotrmurach/tty-which.svg?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/piotrmurach/tty-which/badges/gpa.svg)][codeclimate]
+[![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-which/badge.svg?branch=master)][coveralls]
+[![Inline docs](http://inch-ci.org/github/piotrmurach/tty-which.svg?branch=master)][inchpages]
 
 [gem]: http://badge.fury.io/rb/tty-which
-[travis]: http://travis-ci.org/peter-murach/tty-which
-[codeclimate]: https://codeclimate.com/github/peter-murach/tty-which
-[coveralls]: https://coveralls.io/r/peter-murach/tty-which
-[inchpages]: http://inch-ci.org/github/peter-murach/tty-which
+[travis]: http://travis-ci.org/piotrmurach/tty-which
+[codeclimate]: https://codeclimate.com/github/piotrmurach/tty-which
+[coveralls]: https://coveralls.io/github/piotrmurach/tty-which
+[inchpages]: http://inch-ci.org/github/piotrmurach/tty-which
 
 > Platform independent implementation of Unix `which` utility that searches for executable file in the path.
 
-**TTY::Which** provides cross-platform executables search component for [TTY](https://github.com/peter-murach/tty) toolkit.
+**TTY::Which** provides cross-platform executables search component for [TTY](https://github.com/piotrmurach/tty) toolkit.
 
 ## Installation
 
@@ -48,7 +48,7 @@ TTY::Which.which('/usr/bin/ruby')  # => '/usr/bin/ruby'
 
 ## Contributing
 
-1. Fork it ( https://github.com/peter-murach/tty-which/fork )
+1. Fork it ( https://github.com/piotrmurach/tty-which/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -56,4 +56,4 @@ TTY::Which.which('/usr/bin/ruby')  # => '/usr/bin/ruby'
 
 ## Copyright
 
-Copyright (c) 2015 Piotr Murach. See LICENSE for further details.
+Copyright (c) 2015-2016 Piotr Murach. See LICENSE for further details.
