@@ -1,10 +1,11 @@
-# TTY::Which
+# TTY::Which [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
 [![Gem Version](https://badge.fury.io/rb/tty-which.svg)][gem]
 [![Build Status](https://secure.travis-ci.org/piotrmurach/tty-which.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/piotrmurach/tty-which/badges/gpa.svg)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-which/badge.svg?branch=master)][coveralls]
 [![Inline docs](http://inch-ci.org/github/piotrmurach/tty-which.svg?branch=master)][inchpages]
 
+[gitter]: https://gitter.im/piotrmurach/tty
 [gem]: http://badge.fury.io/rb/tty-which
 [travis]: http://travis-ci.org/piotrmurach/tty-which
 [codeclimate]: https://codeclimate.com/github/piotrmurach/tty-which
