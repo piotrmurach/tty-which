@@ -20,7 +20,7 @@ module TTY
     #
     # @api public
     def which(cmd, search_path = nil)
-      if path_with_executable_file?(cmd)
+      if file_with_path?(cmd)
         return cmd if executable_file?(cmd)
         extensions.each do |ext|
           exe = File.join(cmd, ext)
@@ -137,9 +137,9 @@ module TTY
     # @return [Boolean]
     #
     # @api private
-    def path_with_executable_file?(cmd)
+    def file_with_path?(cmd)
       File.expand_path(cmd) == cmd
     end
-    module_function :path_with_executable_file?
+    module_function :file_with_path?
   end # Which
 end # TTY

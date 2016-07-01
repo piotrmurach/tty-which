@@ -17,14 +17,14 @@ RSpec.describe TTY::Which, '#which' do
     end
 
     it "handles path with executable file /bin/sh" do
-      allow(Which).to receive(:path_with_executable_file?) { true }
+      allow(Which).to receive(:file_with_path?) { true }
       allow(Which).to receive(:executable_file?) { true }
 
       expect(Which.which('/bin/sh')).to eq('/bin/sh')
     end
 
     it "fails to find path executable" do
-      allow(Which).to receive(:path_with_executable_file?) { true }
+      allow(Which).to receive(:file_with_path?) { true }
       allow(Which).to receive(:executable_file?) { false }
 
       expect(Which.which('/bin/sh')).to eq(nil)
@@ -34,7 +34,7 @@ RSpec.describe TTY::Which, '#which' do
       dir_path = "/usr/local/bin"
       cmd = "git"
       expected_path = "#{dir_path}/#{cmd}"
-      allow(Which).to receive(:path_with_executable_file?) { false }
+      allow(Which).to receive(:file_with_path?) { false }
       allow(Which).to receive(:file_with_exec_ext?) { false }
 
       allow(File).to receive(:join)
@@ -52,16 +52,16 @@ RSpec.describe TTY::Which, '#which' do
     let(:path) { "C:\\Program Files\\Git\\bin;" }
     let(:exts) { ".com;.exe;.bat;.cmd" }
 
-    before {
+    before do
       allow(ENV).to receive(:[]).with('PATHEXT').and_return(exts)
       allow(ENV).to receive(:[]).with('PATH').and_return(path)
       stub_const("File::PATH_SEPARATOR", ';')
       stub_const("File::SEPARATOR", '\\')
       allow(Dir).to receive(:exist?) { true }
-    }
+    end
 
     it "handles path with executable file C:\\Program Files\\Git\\bin\\git" do
-      allow(Which).to receive(:path_with_executable_file?) { true }
+      allow(Which).to receive(:file_with_path?) { true }
       allow(Which).to receive(:executable_file?).with(any_args) { false }
 
       path_with_exe_file = 'C:\Program Files\Git\bin\git'
@@ -81,7 +81,7 @@ RSpec.describe TTY::Which, '#which' do
       dir_path = "C:\\Program Files\\Git\\bin"
       cmd = 'git.exe'
       expected_path = "#{dir_path}\\#{cmd}"
-      allow(Which).to receive(:path_with_executable_file?) { false }
+      allow(Which).to receive(:file_with_path?) { false }
       allow(Which).to receive(:file_with_exec_ext?).with(cmd) { true }
 
       allow(File).to receive(:join).with(dir_path, any_args)
@@ -99,7 +99,7 @@ RSpec.describe TTY::Which, '#which' do
       dir_path = "C:\\Program Files\\Git\\bin"
       cmd = 'git'
       expected_path = "#{dir_path}\\#{cmd}.exe"
-      allow(Which).to receive(:path_with_executable_file?) { false }
+      allow(Which).to receive(:file_with_path?) { false }
       allow(Which).to receive(:file_with_exec_ext?).with(cmd) { false }
 
       allow(File).to receive(:join).with(dir_path, any_args)
