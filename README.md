@@ -12,7 +12,7 @@
 [coveralls]: https://coveralls.io/github/piotrmurach/tty-which
 [inchpages]: http://inch-ci.org/github/piotrmurach/tty-which
 
-> Platform independent implementation of Unix `which` utility that searches for executable file in the path.
+> Platform independent implementation of Unix `which` utility that searches for executable file in the path variable.
 
 **TTY::Which** provides cross-platform executables search component for [TTY](https://github.com/piotrmurach/tty) toolkit.
 
@@ -32,19 +32,27 @@ Or install it yourself as:
 
 ## Usage
 
-**TTY::Which** exposes `which` method that searches the path for executable file that would be run had the command been invoked.
+**TTY::Which** has `which` method that searches the path for executable file.
 
-For example, to find location for a single command do:
+When the path to executable exists, an absolute path is returned, otherwise `nil`.
+
+For example, to find location for a single executable do:
 
 ```ruby
 TTY::Which.which('less')  # => '/usr/bin/less'
 TTY::Which.which('git')   # => 'C:\Program Files\Git\bin\git'
 ```
 
-You can also check an absolute path:
+You can also check an absolute path to executable:
 
 ```ruby
 TTY::Which.which('/usr/bin/ruby')  # => '/usr/bin/ruby'
+```
+
+The `exist?` returns `true` if the executable exists in the path and `false` otherwise:
+
+```ruby
+TTY::Which.exist?('ruby') # => ruby
 ```
 
 ## Contributing
