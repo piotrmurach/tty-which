@@ -5,7 +5,6 @@ require 'tty/which/version'
 module TTY
   # A class responsible for finding an executable in the PATH
   module Which
-    extend self
     # Find an executable in a platform independent way
     #
     # @param [String] command
@@ -43,23 +42,30 @@ module TTY
       end
       nil
     end
-
-    private
+    module_function :which
 
     # Find default system paths
+    #
+    # @param [String] path
+    #   the path to search through
+    #
+    # @example
+    #   search_paths("/usr/local/bin:/bin")
+    #   # => ['/bin']
     #
     # @return [Array[String]]
     #   the array of paths to search
     #
     # @api private
-    def search_paths
-      paths = if ENV['PATH']
-                ENV['PATH'].split(File::PATH_SEPARATOR)
+    def search_paths(path = ENV['PATH'])
+      paths = if path && !path.empty?
+                path.split(File::PATH_SEPARATOR)
               else
                 %w(/usr/local/bin /usr/ucb /usr/bin /bin)
               end
       paths.select { |path| Dir.exist?(path) }
     end
+    module_function :search_paths
 
     # All files that contain a '.' in name
     #
@@ -78,6 +84,7 @@ module TTY
       return [''] unless path_ext
       path_ext.split(';').select { |part| part.include?('.') }
     end
+    module_function :extensions
 
     # Determines if filename is an executable file
     #
@@ -101,6 +108,7 @@ module TTY
       path ||= filename
       File.file?(path) && File.executable?(path)
     end
+    module_function :executable_file?
 
     # Check if command itself has extension
     #
@@ -118,6 +126,7 @@ module TTY
       return false if extension.empty?
       extensions.any? { |ext| extension.casecmp(ext) }
     end
+    module_function :executable_file_with_ext?
 
     # Check if executable file is part of absolute/relative path
     #
@@ -130,5 +139,6 @@ module TTY
     def path_with_executable_file?(cmd)
       File.expand_path(cmd) == cmd
     end
+    module_function :path_with_executable_file?
   end # Which
 end # TTY
