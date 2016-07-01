@@ -8,13 +8,13 @@ RSpec.describe TTY::Which, '#which' do
     let(:path) { "/bin:/usr/bin:/usr/local/bin:/opt/local/bin" }
     let(:cmds) { %w(/usr/bin/ls /bin/sh /usr/bin/ruby /usr/local/git/bin/git) }
 
-    before {
+    before do
       allow(ENV).to receive(:[]).with('PATHEXT').and_return(nil)
       allow(ENV).to receive(:[]).with('PATH').and_return(path)
       stub_const("File::PATH_SEPARATOR", ':')
       stub_const("File::SEPARATOR", '/')
       allow(Dir).to receive(:exist?) { true }
-    }
+    end
 
     it "handles path with executable file /bin/sh" do
       allow(Which).to receive(:path_with_executable_file?) { true }
@@ -35,7 +35,7 @@ RSpec.describe TTY::Which, '#which' do
       cmd = "git"
       expected_path = "#{dir_path}/#{cmd}"
       allow(Which).to receive(:path_with_executable_file?) { false }
-      allow(Which).to receive(:executable_file_with_ext?) { false }
+      allow(Which).to receive(:file_with_exec_ext?) { false }
 
       allow(File).to receive(:join)
       allow(File).to receive(:join).with(dir_path, cmd).and_return(expected_path)
@@ -82,7 +82,7 @@ RSpec.describe TTY::Which, '#which' do
       cmd = 'git.exe'
       expected_path = "#{dir_path}\\#{cmd}"
       allow(Which).to receive(:path_with_executable_file?) { false }
-      allow(Which).to receive(:executable_file_with_ext?).with(cmd) { true }
+      allow(Which).to receive(:file_with_exec_ext?).with(cmd) { true }
 
       allow(File).to receive(:join).with(dir_path, any_args)
       allow(File).to receive(:join).with(dir_path, cmd).and_return(expected_path)
@@ -100,7 +100,7 @@ RSpec.describe TTY::Which, '#which' do
       cmd = 'git'
       expected_path = "#{dir_path}\\#{cmd}.exe"
       allow(Which).to receive(:path_with_executable_file?) { false }
-      allow(Which).to receive(:executable_file_with_ext?).with(cmd) { false }
+      allow(Which).to receive(:file_with_exec_ext?).with(cmd) { false }
 
       allow(File).to receive(:join).with(dir_path, any_args)
       allow(File).to receive(:join).with(dir_path, "#{cmd}.exe").

@@ -31,7 +31,7 @@ module TTY
 
       search_path ||= search_paths
       search_path.each do |path|
-        if executable_file_with_ext?(cmd)
+        if file_with_exec_ext?(cmd)
           exe = File.join(path, cmd)
           return File.absolute_path(exe) if executable_file?(exe)
         end
@@ -110,23 +110,24 @@ module TTY
     end
     module_function :executable_file?
 
-    # Check if command itself has extension
+    # Check if command itself has executable extension
     #
     # @param [String] filename
-    #   the path to file
+    #   the path to executable file
     #
     # @example
-    #   executable_file_with_ext?("file.bat") # => true
+    #   file_with_exec_ext?("file.bat")
+    #   # => true
     #
     # @return [Boolean]
     #
     # @api private
-    def executable_file_with_ext?(filename)
+    def file_with_exec_ext?(filename)
       extension = File.extname(filename)
       return false if extension.empty?
-      extensions.any? { |ext| extension.casecmp(ext) }
+      extensions.any? { |ext| extension.casecmp(ext).zero? }
     end
-    module_function :executable_file_with_ext?
+    module_function :file_with_exec_ext?
 
     # Check if executable file is part of absolute/relative path
     #
