@@ -44,6 +44,22 @@ module TTY
     end
     module_function :which
 
+    # Check if executable exists in the path
+    #
+    # @param [String] command
+    #   the executable to check
+    #
+    # @param [String] search_path
+    #   paths to check
+    #
+    # @return [Boolean]
+    #
+    # @api public
+    def exist?(cmd, search_path = nil)
+      !which(cmd, search_path).nil?
+    end
+    module_function :exist?
+
     # Find default system paths
     #
     # @param [String] path
