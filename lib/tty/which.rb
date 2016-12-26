@@ -79,7 +79,7 @@ module TTY
               else
                 %w(/usr/local/bin /usr/ucb /usr/bin /bin)
               end
-      paths.select { |path| Dir.exist?(path) }
+      paths.select(&Dir.method(:exist?))
     end
     module_function :search_paths
 
