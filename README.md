@@ -54,7 +54,7 @@ TTY::Which.which('/usr/bin/ruby')  # => '/usr/bin/ruby'
 The `exist?` returns `true` if the executable exists in the path and `false` otherwise:
 
 ```ruby
-TTY::Which.exist?('ruby') # => ruby
+TTY::Which.exist?('ruby') # => true
 ```
 
 ## Contributing
