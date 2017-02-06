@@ -67,4 +67,4 @@ TTY::Which.exist?('ruby') # => true
 
 ## Copyright
 
-Copyright (c) 2015-2016 Piotr Murach. See LICENSE for further details.
+Copyright (c) 2015-2017 Piotr Murach. See LICENSE for further details.
