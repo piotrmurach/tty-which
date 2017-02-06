@@ -1,6 +1,11 @@
 # Change log
 
-## [v0.2.1] - 2015-12-26
+## [v0.2.2] - 2017-02-06
+
+### Fixed
+* Fix File namespacing issue
+
+## [v0.2.1] - 2016-12-26
 
 ### Changed
 * Change to stop shadowing path var in Which#search_paths
@@ -22,6 +27,7 @@
 
 * Initial implementation and release
 
+[v0.2.2]: https://github.com/piotrmurach/tty-which/compare/v0.2.1...v0.2.2
 [v0.2.1]: https://github.com/piotrmurach/tty-which/compare/v0.2.0...v0.2.1
 [v0.2.0]: https://github.com/piotrmurach/tty-which/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/piotrmurach/tty-which/compare/v0.1.0
