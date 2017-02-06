@@ -23,8 +23,8 @@ module TTY
       if file_with_path?(cmd)
         return cmd if executable_file?(cmd)
         extensions.each do |ext|
-          exe = File.join(cmd, ext)
-          return File.absolute_path(exe) if executable_file?(exe)
+          exe = ::File.join(cmd, ext)
+          return ::File.absolute_path(exe) if executable_file?(exe)
         end
         return nil
       end
@@ -32,12 +32,12 @@ module TTY
       search_path ||= search_paths
       search_path.each do |path|
         if file_with_exec_ext?(cmd)
-          exe = File.join(path, cmd)
-          return File.absolute_path(exe) if executable_file?(exe)
+          exe = ::File.join(path, cmd)
+          return ::File.absolute_path(exe) if executable_file?(exe)
         end
         extensions.each do |ext|
-          exe = File.join(path, "#{cmd}#{ext}")
-          return File.absolute_path(exe) if executable_file?(exe)
+          exe = ::File.join(path, "#{cmd}#{ext}")
+          return ::File.absolute_path(exe) if executable_file?(exe)
         end
       end
       nil
@@ -75,7 +75,7 @@ module TTY
     # @api private
     def search_paths(path = ENV['PATH'])
       paths = if path && !path.empty?
-                path.split(File::PATH_SEPARATOR)
+                path.split(::File::PATH_SEPARATOR)
               else
                 %w(/usr/local/bin /usr/ucb /usr/bin /bin)
               end
@@ -120,9 +120,9 @@ module TTY
     #
     # @api private
     def executable_file?(filename, dir = nil)
-      path = File.join(dir, filename) if dir
+      path = ::File.join(dir, filename) if dir
       path ||= filename
-      File.file?(path) && File.executable?(path)
+      ::File.file?(path) && ::File.executable?(path)
     end
     module_function :executable_file?
 
@@ -139,7 +139,7 @@ module TTY
     #
     # @api private
     def file_with_exec_ext?(filename)
-      extension = File.extname(filename)
+      extension = ::File.extname(filename)
       return false if extension.empty?
       extensions.any? { |ext| extension.casecmp(ext).zero? }
     end
@@ -154,7 +154,7 @@ module TTY
     #
     # @api private
     def file_with_path?(cmd)
-      File.expand_path(cmd) == cmd
+      ::File.expand_path(cmd) == cmd
     end
     module_function :file_with_path?
   end # Which
