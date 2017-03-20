@@ -29,8 +29,7 @@ module TTY
         return nil
       end
 
-      search_path ||= search_paths
-      search_path.each do |path|
+      search_paths.each do |path|
         if file_with_exec_ext?(cmd)
           exe = ::File.join(path, cmd)
           return ::File.absolute_path(exe) if executable_file?(exe)
