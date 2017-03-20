@@ -1,5 +1,12 @@
 # Change log
 
+## [v0.3.0] - 2017-03-20
+
+### Changed
+* Change #extensions to use file path separator
+* Change files loading
+* Remove search paths caching
+
 ## [v0.2.2] - 2017-02-06
 
 ### Fixed
