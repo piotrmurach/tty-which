@@ -1,3 +1,3 @@
 # coding: utf-8
 
-require 'tty/which'
+require_relative 'tty/which'

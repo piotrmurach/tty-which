@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require 'tty/which/version'
+require_relative 'which/version'
 
 module TTY
   # A class responsible for finding an executable in the PATH
