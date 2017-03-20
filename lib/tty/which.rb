@@ -83,7 +83,7 @@ module TTY
     end
     module_function :search_paths
 
-    # All files that contain a '.' in name
+    # All possible file extensions
     #
     # @example
     #   extensions('.exe;cmd;.bat')
@@ -98,7 +98,7 @@ module TTY
     # @api private
     def extensions(path_ext = ENV['PATHEXT'])
       return [''] unless path_ext
-      path_ext.split(';').select { |part| part.include?('.') }
+      path_ext.split(::File::PATH_SEPARATOR).select { |part| part.include?('.') }
     end
     module_function :extensions
 
