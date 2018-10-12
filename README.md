@@ -1,4 +1,9 @@
+<div align="center">
+  <a href="https://piotrmurach.github.io/tty" target="_blank"><img width="130" src="https://cdn.rawgit.com/piotrmurach/tty/master/images/tty.png" alt="tty logo" /></a>
+</div>
+
 # TTY::Which [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
+
 [![Gem Version](https://badge.fury.io/rb/tty-which.svg)][gem]
 [![Build Status](https://secure.travis-ci.org/piotrmurach/tty-which.svg?branch=master)][travis]
 [![Build status](https://ci.appveyor.com/api/projects/status/2rpm67huf1nh98d0?svg=true)][appveyor]
