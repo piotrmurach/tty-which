@@ -51,6 +51,7 @@ RSpec.describe TTY::Which, '#which' do
       paths = %w(/usr/local/bin /usr/bin /bin)
       allow(Which).to receive(:executable_file?).with('/usr/local/bin/ruby') { false }
       allow(Which).to receive(:executable_file?).with('/usr/bin/ruby') { true }
+      allow(::File).to receive(:absolute_path).with('/usr/bin/ruby').and_return('/usr/bin/ruby')
 
       expect(TTY::Which.which('ruby', paths: paths)).to eq('/usr/bin/ruby')
     end
