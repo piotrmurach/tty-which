@@ -1,5 +1,16 @@
 # Change log
 
+## [v0.4.0] - 2018-10-13
+
+### Added
+* Add ability to specify search paths for #which and #exist? calls
+
+### Changed
+* Change to freeze all strings
+* Change gemspec to require Ruby >= 2.0.0
+* Change gemspec to load files without calling git
+* Change gemspec to add rspec as dev dependency
+
 ## [v0.3.0] - 2017-03-20
 
 ### Changed
@@ -34,6 +45,8 @@
 
 * Initial implementation and release
 
+[v0.4.0]: https://github.com/piotrmurach/tty-which/compare/v0.3.0...v0.4.0
+[v0.3.0]: https://github.com/piotrmurach/tty-which/compare/v0.2.2...v0.3.0
 [v0.2.2]: https://github.com/piotrmurach/tty-which/compare/v0.2.1...v0.2.2
 [v0.2.1]: https://github.com/piotrmurach/tty-which/compare/v0.2.0...v0.2.1
 [v0.2.0]: https://github.com/piotrmurach/tty-which/compare/v0.1.0...v0.2.0
