@@ -9,17 +9,22 @@ module TTY
     #
     # @param [String] command
     #   the command to search for
+    # @param [Array[String]] paths
+    #   the paths to look through
     #
     # @example
     #   which('ruby')                 # => '/usr/local/bin/ruby'
     #   which('/usr/local/bin/ruby')  # => '/usr/local/bin/ruby'
     #   which('foo')                  # => nil
     #
+    # @example
+    #   which('ruby', paths: ['/usr/locale/bin', '/usr/bin', '/bin'])
+    #
     # @return [String, nil]
     #   the absolute path to executable if found, `nil` otherwise
     #
     # @api public
-    def which(cmd, search_path = nil)
+    def which(cmd, paths: search_paths)
       if file_with_path?(cmd)
         return cmd if executable_file?(cmd)
         extensions.each do |ext|
@@ -29,7 +34,7 @@ module TTY
         return nil
       end
 
-      search_paths.each do |path|
+      paths.each do |path|
         if file_with_exec_ext?(cmd)
           exe = ::File.join(path, cmd)
           return ::File.absolute_path(exe) if executable_file?(exe)
@@ -48,14 +53,14 @@ module TTY
     # @param [String] command
     #   the executable to check
     #
-    # @param [String] search_path
+    # @param [String] paths
     #   paths to check
     #
     # @return [Boolean]
     #
     # @api public
-    def exist?(cmd, search_path = nil)
-      !which(cmd, search_path).nil?
+    def exist?(cmd, paths: search_paths)
+      !which(cmd, paths: paths).nil?
     end
     module_function :exist?
 

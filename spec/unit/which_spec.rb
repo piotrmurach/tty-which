@@ -46,6 +46,14 @@ RSpec.describe TTY::Which, '#which' do
 
       expect(Which.which(cmd)).to eq(expected_path)
     end
+
+    it "allows to search through custom paths" do
+      paths = %w(/usr/local/bin /usr/bin /bin)
+      allow(Which).to receive(:executable_file?).with('/usr/local/bin/ruby') { false }
+      allow(Which).to receive(:executable_file?).with('/usr/bin/ruby') { true }
+
+      expect(TTY::Which.which('ruby', paths: paths)).to eq('/usr/bin/ruby')
+    end
   end
 
   context "with extension" do
