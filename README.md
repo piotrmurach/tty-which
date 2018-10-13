@@ -39,11 +39,11 @@ Or install it yourself as:
 
 ## Usage
 
-**TTY::Which** has `which` method that searches the path for executable file.
+**TTY::Which** has `which` method that searches set of directories for an executable file based on the `PATH` environment variable.
 
-When the path to executable exists, an absolute path is returned, otherwise `nil`.
+When the path to an executable program exists, an absolute path is returned, otherwise `nil`.
 
-For example, to find location for a single executable do:
+For example, to find location for an executable program do:
 
 ```ruby
 TTY::Which.which('less')  # => '/usr/bin/less'
@@ -56,7 +56,14 @@ You can also check an absolute path to executable:
 TTY::Which.which('/usr/bin/ruby')  # => '/usr/bin/ruby'
 ```
 
-The `exist?` returns `true` if the executable exists in the path and `false` otherwise:
+You can also specify directly the paths to search using `:paths` keyword:
+
+```ruby
+TTY::Which.which('ruby', paths: ['/usr/local/bin', '/usr/bin', '/bin'])
+# => '/usr/local/bin/ruby'
+```
+
+When you're only interesting in knowning that an executable exists on the system use the `exist?` call:
 
 ```ruby
 TTY::Which.exist?('ruby') # => true
@@ -72,4 +79,4 @@ TTY::Which.exist?('ruby') # => true
 
 ## Copyright
 
-Copyright (c) 2015-2017 Piotr Murach. See LICENSE for further details.
+Copyright (c) 2015-2018 Piotr Murach. See LICENSE for further details.
