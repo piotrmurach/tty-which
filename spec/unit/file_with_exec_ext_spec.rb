@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 RSpec.describe TTY::Which, "#file_with_exec_ext?" do
   it "detects executable extension" do
