@@ -63,13 +63,15 @@ TTY::Which.which('ruby', paths: ['/usr/local/bin', '/usr/bin', '/bin'])
 # => '/usr/local/bin/ruby'
 ```
 
-When you're only interesting in knowning that an executable exists on the system use the `exist?` call:
+When you're only interesting in knowing that an executable exists on the system use the `exist?` call:
 
 ```ruby
 TTY::Which.exist?('ruby') # => true
 ```
 
 ## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/piotrmurach/tty-which. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 1. Fork it ( https://github.com/piotrmurach/tty-which/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -79,4 +81,4 @@ TTY::Which.exist?('ruby') # => true
 
 ## Copyright
 
-Copyright (c) 2015-2018 Piotr Murach. See LICENSE for further details.
+Copyright (c) 2015 Piotr Murach. See LICENSE for further details.
