@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "tty-which"
   spec.version       = TTY::Which::VERSION
   spec.authors       = ["Piotr Murach"]
-  spec.email         = [""]
+  spec.email         = ["me@piotrmurach.com"]
   spec.summary       = %q{Platform independent implementation of Unix which command.}
   spec.description   = %q{Platform independent implementation of Unix which command.}
   spec.homepage      = "http://piotrmurach.github.io/tty/"
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.0.0'
 
-  spec.add_development_dependency 'bundler', '>= 1.5.0', '< 2.0'
+  spec.add_development_dependency 'bundler', '>= 1.5.0'
   spec.add_development_dependency 'rspec', '~> 3.1'
   spec.add_development_dependency 'rake'
 end
