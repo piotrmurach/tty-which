@@ -1,5 +1,10 @@
 # Change log
 
+## [v0.4.1] - 2019-06-02
+
+### Changed
+* Change to relax bundler dependency version
+
 ## [v0.4.0] - 2018-10-13
 
 ### Added
@@ -45,6 +50,7 @@
 
 * Initial implementation and release
 
+[v0.4.1]: https://github.com/piotrmurach/tty-which/compare/v0.4.0...v0.4.1
 [v0.4.0]: https://github.com/piotrmurach/tty-which/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/piotrmurach/tty-which/compare/v0.2.2...v0.3.0
 [v0.2.2]: https://github.com/piotrmurach/tty-which/compare/v0.2.1...v0.2.2
