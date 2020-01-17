@@ -1,4 +1,4 @@
-# frozen_string_literal
+# frozen_string_literal: true
 
 RSpec.describe TTY::Which, '#exist?' do
   it "finds executable in the path" do
