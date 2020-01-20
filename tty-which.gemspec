@@ -1,6 +1,4 @@
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "tty/which/version"
+require_relative "lib/tty/which/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "tty-which"
@@ -19,9 +17,9 @@ Gem::Specification.new do |spec|
     "homepage_uri"      => spec.homepage,
     "source_code_uri"   => "https://github.com/piotrmurach/tty-which"
   }
-
-  spec.files         = Dir["{lib,spec}/**/*.rb", "tasks/*", "tty-which.gemspec"]
-  spec.files        += Dir["README.md", "CHANGELOG.md", "LICENSE.txt", "Rakefile"]
+  spec.files         = Dir["lib/**/*", "README.md", "CHANGELOG.md", "LICENSE.txt"]
+  spec.extra_rdoc_files = ["README.md"]
+  spec.bindir        = "exe"
   spec.require_paths = ["lib"]
   spec.required_ruby_version = ">= 2.0.0"
 
