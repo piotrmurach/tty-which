@@ -7,9 +7,9 @@ module TTY
   module Which
     # Find an executable in a platform independent way
     #
-    # @param [String] command
+    # @param [String] cmd
     #   the command to search for
-    # @param [Array[String]] paths
+    # @param [Array<String>] paths
     #   the paths to look through
     #
     # @example
@@ -50,10 +50,10 @@ module TTY
 
     # Check if executable exists in the path
     #
-    # @param [String] command
+    # @param [String] cmd
     #   the executable to check
     #
-    # @param [String] paths
+    # @param [Array<String>] paths
     #   paths to check
     #
     # @return [Boolean]
@@ -73,7 +73,7 @@ module TTY
     #   search_paths("/usr/local/bin:/bin")
     #   # => ['/bin']
     #
-    # @return [Array[String]]
+    # @return [Array<String>]
     #   the array of paths to search
     #
     # @api private
@@ -96,7 +96,7 @@ module TTY
     # @param [String] path_ext
     #   a string of semicolon separated filename extensions
     #
-    # @return [Array[String]]
+    # @return [Array<String>]
     #   an array with valid file extensions
     #
     # @api private
