@@ -37,7 +37,7 @@ RSpec.describe TTY::Which, '#which' do
       allow(Which).to receive(:file_with_path?) { false }
       allow(Which).to receive(:file_with_exec_ext?) { false }
 
-      allow(::File).to receive(:join)
+      allow(::File).to receive(:join).and_call_original
       allow(::File).to receive(:join).with(dir_path, cmd).and_return(expected_path)
       allow(Which).to receive(:executable_file?) { false }
       allow(Which).to receive(:executable_file?).with(expected_path) { true }
@@ -76,6 +76,7 @@ RSpec.describe TTY::Which, '#which' do
       path_with_exe_file = 'C:\Program Files\Git\bin\git'
       expected_path = "#{path_with_exe_file}.exe"
 
+      allow(::File).to receive(:join).and_call_original
       allow(::File).to receive(:join).with(path_with_exe_file, any_args).
         and_return(path_with_exe_file)
       allow(::File).to receive(:join).with(path_with_exe_file, '.exe').
@@ -93,6 +94,7 @@ RSpec.describe TTY::Which, '#which' do
       allow(Which).to receive(:file_with_path?) { false }
       allow(Which).to receive(:file_with_exec_ext?).with(cmd) { true }
 
+      allow(::File).to receive(:join).and_call_original
       allow(::File).to receive(:join).with(dir_path, any_args)
       allow(::File).to receive(:join).with(dir_path, cmd).and_return(expected_path)
       allow(Which).to receive(:executable_file?).with(any_args) { false }
@@ -111,6 +113,7 @@ RSpec.describe TTY::Which, '#which' do
       allow(Which).to receive(:file_with_path?) { false }
       allow(Which).to receive(:file_with_exec_ext?).with(cmd) { false }
 
+      allow(::File).to receive(:join).and_call_original
       allow(::File).to receive(:join).with(dir_path, any_args)
       allow(::File).to receive(:join).with(dir_path, "#{cmd}.exe").
         and_return(expected_path)

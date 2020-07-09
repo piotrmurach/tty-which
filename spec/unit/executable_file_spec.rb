@@ -3,6 +3,8 @@
 RSpec.describe TTY::Which, "#executable_file?" do
   it "checks if file in directory is executable" do
     path = "/usr/local/bin/ruby"
+    allow(::File).to receive(:join).and_call_original
+    allow(::File).to receive(:file?).and_call_original
     allow(::File).to receive(:join).with("/usr/local/bin", "ruby").and_return(path)
     allow(::File).to receive(:file?).with(path).and_return(true)
     allow(::File).to receive(:executable?).with(path).and_return(true)
@@ -11,6 +13,7 @@ RSpec.describe TTY::Which, "#executable_file?" do
   end
 
   it "checks if only a file is executable" do
+    allow(::File).to receive(:file?).and_call_original
     allow(::File).to receive(:file?).with("ruby").and_return(true)
     allow(::File).to receive(:executable?).with("ruby").and_return(true)
 
