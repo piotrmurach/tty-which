@@ -28,7 +28,7 @@ module TTY
       if file_with_path?(cmd)
         return cmd if executable_file?(cmd)
         extensions.each do |ext|
-          exe = ::File.join(cmd, ext)
+          exe = "#{cmd}#{ext}"
           return ::File.absolute_path(exe) if executable_file?(exe)
         end
         return nil

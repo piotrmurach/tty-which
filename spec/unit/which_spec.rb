@@ -5,14 +5,14 @@ RSpec.describe TTY::Which, '#which' do
   before { stub_const("Which", described_class) }
 
   context "without extension" do
-    let(:path) { "/bin:/usr/bin:/usr/local/bin:/opt/local/bin" }
+    let(:path) { %w[/bin /usr/bin /usr/local/bin /opt/local/bin].join(":") }
     let(:cmds) { %w(/usr/bin/ls /bin/sh /usr/bin/ruby /usr/local/git/bin/git) }
 
     before do
       allow(ENV).to receive(:[]).with('PATHEXT').and_return(nil)
       allow(ENV).to receive(:[]).with('PATH').and_return(path)
-      stub_const("::File::PATH_SEPARATOR", ':')
-      stub_const("::File::SEPARATOR", '/')
+      stub_const("::File::PATH_SEPARATOR", ":")
+      stub_const("::File::SEPARATOR", "/")
       allow(Dir).to receive(:exist?) { true }
     end
 
@@ -58,14 +58,14 @@ RSpec.describe TTY::Which, '#which' do
   end
 
   context "with extension" do
-    let(:path) { "C:\\Program Files\\Git\\bin;" }
-    let(:exts) { ".com;.exe;.bat;.cmd" }
+    let(:path) { ["C:\\Program Files\\Git\\bin"].join(";") }
+    let(:exts) { %w[.msi .exe .bat .cmd].join(";") }
 
     before do
       allow(ENV).to receive(:[]).with('PATHEXT').and_return(exts)
       allow(ENV).to receive(:[]).with('PATH').and_return(path)
-      stub_const("::File::PATH_SEPARATOR", ';')
-      stub_const("::File::SEPARATOR", '\\')
+      stub_const("::File::PATH_SEPARATOR", ";")
+      stub_const("::File::SEPARATOR", "\\")
       allow(Dir).to receive(:exist?) { true }
     end
 
@@ -73,23 +73,20 @@ RSpec.describe TTY::Which, '#which' do
       allow(Which).to receive(:file_with_path?) { true }
       allow(Which).to receive(:executable_file?).with(any_args) { false }
 
-      path_with_exe_file = 'C:\Program Files\Git\bin\git'
+      path_with_exe_file = "C:\\Program Files\\Git\\bin\\git"
       expected_path = "#{path_with_exe_file}.exe"
 
-      allow(::File).to receive(:join).and_call_original
-      allow(::File).to receive(:join).with(path_with_exe_file, any_args).
-        and_return(path_with_exe_file)
-      allow(::File).to receive(:join).with(path_with_exe_file, '.exe').
-        and_return(expected_path)
       allow(Which).to receive(:executable_file?).with(expected_path) { true }
       allow(::File).to receive(:absolute_path).and_return(expected_path)
 
       expect(Which.which(path_with_exe_file)).to eq(expected_path)
+      expect(Which).to have_received(:executable_file?)
+        .with("#{path_with_exe_file}.msi")
     end
 
     it "searches path for executable git.exe" do
       dir_path = "C:\\Program Files\\Git\\bin"
-      cmd = 'git.exe'
+      cmd = "git.exe"
       expected_path = "#{dir_path}\\#{cmd}"
       allow(Which).to receive(:file_with_path?) { false }
       allow(Which).to receive(:file_with_exec_ext?).with(cmd) { true }
