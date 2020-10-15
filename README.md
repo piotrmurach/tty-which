@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://piotrmurach.github.io/tty" target="_blank"><img width="130" src="https://cdn.rawgit.com/piotrmurach/tty/master/images/tty.png" alt="tty logo" /></a>
+  <a href="https://ttytoolkit.org"><img width="130" src="https://github.com/piotrmurach/tty/raw/master/images/tty.png" alt="TTY Toolkit logo"/></a>
 </div>
 
 # TTY::Which [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
@@ -27,7 +27,7 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'tty-which'
+    gem "tty-which"
 
 And then execute:
 
@@ -46,27 +46,27 @@ When the path to an executable program exists, an absolute path is returned, oth
 For example, to find location for an executable program do:
 
 ```ruby
-TTY::Which.which('less')  # => '/usr/bin/less'
-TTY::Which.which('git')   # => 'C:\Program Files\Git\bin\git'
+TTY::Which.which("less")  # => "/usr/bin/less"
+TTY::Which.which("git")   # => "C:\Program Files\Git\bin\git"
 ```
 
 You can also check an absolute path to executable:
 
 ```ruby
-TTY::Which.which('/usr/bin/ruby')  # => '/usr/bin/ruby'
+TTY::Which.which("/usr/bin/ruby")  # => "/usr/bin/ruby"
 ```
 
 You can also specify directly the paths to search using `:paths` keyword:
 
 ```ruby
-TTY::Which.which('ruby', paths: ['/usr/local/bin', '/usr/bin', '/bin'])
-# => '/usr/local/bin/ruby'
+TTY::Which.which("ruby", paths: ["/usr/local/bin", "/usr/bin", "/bin"])
+# => "/usr/local/bin/ruby"
 ```
 
 When you're only interesting in knowing that an executable exists on the system use the `exist?` call:
 
 ```ruby
-TTY::Which.exist?('ruby') # => true
+TTY::Which.exist?("ruby") # => true
 ```
 
 ## Contributing
