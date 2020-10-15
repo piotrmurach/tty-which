@@ -1,5 +1,13 @@
 # Change log
 
+## [v0.5.0] - unreleased
+
+### Changed
+* Change to use double-quoted strings
+
+### Fixed
+* Fix to stop joining absolute path and extension with a file path separator
+
 ## [v0.4.2] - 2020-01-20
 
 ### Changed
@@ -55,6 +63,7 @@
 
 * Initial implementation and release
 
+[v0.5.0]: https://github.com/piotrmurach/tty-which/compare/v0.4.2...v0.5.0
 [v0.4.2]: https://github.com/piotrmurach/tty-which/compare/v0.4.1...v0.4.2
 [v0.4.1]: https://github.com/piotrmurach/tty-which/compare/v0.4.0...v0.4.1
 [v0.4.0]: https://github.com/piotrmurach/tty-which/compare/v0.3.0...v0.4.0
