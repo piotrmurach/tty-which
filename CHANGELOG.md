@@ -4,6 +4,7 @@
 
 ### Changed
 * Change to use double-quoted strings
+* Remove bundler as development dependency
 
 ### Fixed
 * Fix to stop joining absolute path and extension with a file path separator
