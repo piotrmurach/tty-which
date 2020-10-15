@@ -1,1 +1,1 @@
-require_relative 'tty/which'
+require_relative "tty/which"

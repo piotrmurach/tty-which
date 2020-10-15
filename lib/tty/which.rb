@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'which/version'
+require_relative "which/version"
 
 module TTY
   # A class responsible for finding an executable in the PATH
@@ -13,12 +13,12 @@ module TTY
     #   the paths to look through
     #
     # @example
-    #   which('ruby')                 # => '/usr/local/bin/ruby'
-    #   which('/usr/local/bin/ruby')  # => '/usr/local/bin/ruby'
-    #   which('foo')                  # => nil
+    #   which("ruby")                 # => "/usr/local/bin/ruby"
+    #   which("/usr/local/bin/ruby")  # => "/usr/local/bin/ruby"
+    #   which("foo")                  # => nil
     #
     # @example
-    #   which('ruby', paths: ['/usr/locale/bin', '/usr/bin', '/bin'])
+    #   which("ruby", paths: ["/usr/locale/bin", "/usr/bin", "/bin"])
     #
     # @return [String, nil]
     #   the absolute path to executable if found, `nil` otherwise
@@ -71,13 +71,13 @@ module TTY
     #
     # @example
     #   search_paths("/usr/local/bin:/bin")
-    #   # => ['/bin']
+    #   # => ["/bin"]
     #
     # @return [Array<String>]
     #   the array of paths to search
     #
     # @api private
-    def search_paths(path = ENV['PATH'])
+    def search_paths(path = ENV["PATH"])
       paths = if path && !path.empty?
                 path.split(::File::PATH_SEPARATOR)
               else
@@ -90,8 +90,8 @@ module TTY
     # All possible file extensions
     #
     # @example
-    #   extensions('.exe;cmd;.bat')
-    #   # => ['.exe','.bat']
+    #   extensions(".exe;cmd;.bat")
+    #   # => [".exe", ".bat"]
     #
     # @param [String] path_ext
     #   a string of semicolon separated filename extensions
@@ -100,20 +100,20 @@ module TTY
     #   an array with valid file extensions
     #
     # @api private
-    def extensions(path_ext = ENV['PATHEXT'])
-      return [''] unless path_ext
-      path_ext.split(::File::PATH_SEPARATOR).select { |part| part.include?('.') }
+    def extensions(path_ext = ENV["PATHEXT"])
+      return [""] unless path_ext
+      path_ext.split(::File::PATH_SEPARATOR).select { |part| part.include?(".") }
     end
     module_function :extensions
 
     # Determines if filename is an executable file
     #
     # @example Basic usage
-    #   executable_file?('/usr/bin/less') # => true
+    #   executable_file?("/usr/bin/less") # => true
     #
     # @example Executable in directory
-    #   executable_file?('less', '/usr/bin') # => true
-    #   executable_file?('less', '/usr') # => false
+    #   executable_file?("less", "/usr/bin") # => true
+    #   executable_file?("less", "/usr") # => false
     #
     # @param [String] filename
     #   the path to file
