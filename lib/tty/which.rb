@@ -27,6 +27,7 @@ module TTY
     def which(cmd, paths: search_paths)
       if file_with_path?(cmd)
         return cmd if executable_file?(cmd)
+
         extensions.each do |ext|
           exe = "#{cmd}#{ext}"
           return ::File.absolute_path(exe) if executable_file?(exe)
@@ -81,7 +82,7 @@ module TTY
       paths = if path && !path.empty?
                 path.split(::File::PATH_SEPARATOR)
               else
-                %w(/usr/local/bin /usr/ucb /usr/bin /bin)
+                %w[/usr/local/bin /usr/ucb /usr/bin /bin]
               end
       paths.select(&Dir.method(:exist?))
     end
@@ -102,6 +103,7 @@ module TTY
     # @api private
     def extensions(path_ext = ENV["PATHEXT"])
       return [""] unless path_ext
+
       path_ext.split(::File::PATH_SEPARATOR).select { |part| part.include?(".") }
     end
     module_function :extensions
@@ -145,6 +147,7 @@ module TTY
     def file_with_exec_ext?(filename)
       extension = ::File.extname(filename)
       return false if extension.empty?
+
       extensions.any? { |ext| extension.casecmp(ext).zero? }
     end
     module_function :file_with_exec_ext?
