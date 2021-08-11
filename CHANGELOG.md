@@ -1,6 +1,6 @@
 # Change log
 
-## [v0.5.0] - unreleased
+## [v0.5.0] - 2021-08-11
 
 ### Changed
 * Change to use double-quoted strings
