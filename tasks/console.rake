@@ -4,8 +4,8 @@ desc "Load gem inside irb console"
 task :console do
   require "irb"
   require "irb/completion"
-  require File.join(__FILE__, "../../lib/tty-which")
+  require_relative "../lib/tty-which"
   ARGV.clear
   IRB.start
 end
-task c: %w[ console ]
+task c: %w[console]
