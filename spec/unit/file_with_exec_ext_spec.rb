@@ -15,4 +15,3 @@ RSpec.describe TTY::Which, "#file_with_exec_ext?" do
     expect(TTY::Which.file_with_exec_ext?(filename)).to eq(false)
   end
 end
-

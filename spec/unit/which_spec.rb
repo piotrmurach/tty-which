@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe TTY::Which, "#which" do
-
   before { stub_const("Which", described_class) }
 
   context "without extension" do
     let(:path) { %w[/bin /usr/bin /usr/local/bin /opt/local/bin].join(":") }
-    let(:cmds) { %w(/usr/bin/ls /bin/sh /usr/bin/ruby /usr/local/git/bin/git) }
+    let(:cmds) { %w[/usr/bin/ls /bin/sh /usr/bin/ruby /usr/local/git/bin/git] }
 
     before do
       allow(ENV).to receive(:[]).with("PATHEXT").and_return(nil)
@@ -38,20 +37,22 @@ RSpec.describe TTY::Which, "#which" do
       allow(Which).to receive(:file_with_exec_ext?) { false }
 
       allow(::File).to receive(:join).and_call_original
-      allow(::File).to receive(:join).with(dir_path, cmd).and_return(expected_path)
+      allow(::File).to receive(:join).with(dir_path, cmd)
+                                     .and_return(expected_path)
       allow(Which).to receive(:executable_file?) { false }
       allow(Which).to receive(:executable_file?).with(expected_path) { true }
-      allow(::File).to receive(:absolute_path).with(expected_path).
-        and_return(expected_path)
+      allow(::File).to receive(:absolute_path).with(expected_path)
+                                              .and_return(expected_path)
 
       expect(Which.which(cmd)).to eq(expected_path)
     end
 
     it "allows to search through custom paths" do
-      paths = %w(/usr/local/bin /usr/bin /bin)
+      paths = %w[/usr/local/bin /usr/bin /bin]
       allow(Which).to receive(:executable_file?).with("/usr/local/bin/ruby") { false }
       allow(Which).to receive(:executable_file?).with("/usr/bin/ruby") { true }
-      allow(::File).to receive(:absolute_path).with("/usr/bin/ruby").and_return("/usr/bin/ruby")
+      allow(::File).to receive(:absolute_path).with("/usr/bin/ruby")
+                                              .and_return("/usr/bin/ruby")
 
       expect(TTY::Which.which("ruby", paths: paths)).to eq("/usr/bin/ruby")
     end
@@ -93,11 +94,12 @@ RSpec.describe TTY::Which, "#which" do
 
       allow(::File).to receive(:join).and_call_original
       allow(::File).to receive(:join).with(dir_path, any_args)
-      allow(::File).to receive(:join).with(dir_path, cmd).and_return(expected_path)
+      allow(::File).to receive(:join).with(dir_path, cmd)
+                                     .and_return(expected_path)
       allow(Which).to receive(:executable_file?).with(any_args) { false }
       allow(Which).to receive(:executable_file?).with(expected_path) { true }
-      allow(::File).to receive(:absolute_path).with(expected_path).
-        and_return(expected_path)
+      allow(::File).to receive(:absolute_path).with(expected_path)
+                                              .and_return(expected_path)
 
       expect(Which.which(cmd)).to eq(expected_path)
       expect(::File).to have_received(:absolute_path).with(expected_path)
@@ -112,12 +114,12 @@ RSpec.describe TTY::Which, "#which" do
 
       allow(::File).to receive(:join).and_call_original
       allow(::File).to receive(:join).with(dir_path, any_args)
-      allow(::File).to receive(:join).with(dir_path, "#{cmd}.exe").
-        and_return(expected_path)
+      allow(::File).to receive(:join).with(dir_path, "#{cmd}.exe")
+                                     .and_return(expected_path)
       allow(Which).to receive(:executable_file?).with(any_args) { false }
       allow(Which).to receive(:executable_file?).with(expected_path) { true }
-      allow(::File).to receive(:absolute_path).with(expected_path).
-        and_return(expected_path)
+      allow(::File).to receive(:absolute_path).with(expected_path)
+                                              .and_return(expected_path)
 
       expect(Which.which(cmd)).to eq(expected_path)
       expect(::File).to have_received(:absolute_path).with(expected_path)

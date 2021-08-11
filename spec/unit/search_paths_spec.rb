@@ -6,7 +6,8 @@ RSpec.describe TTY::Which, "#search_paths" do
     allow(Dir).to receive(:exist?).and_return(true)
 
     expect(TTY::Which.search_paths).to eq([
-      "/usr/local/bin", "/usr/ucb", "/usr/bin", "/bin"])
+      "/usr/local/bin", "/usr/ucb", "/usr/bin", "/bin"
+    ])
   end
 
   it "finds paths in path environment" do
