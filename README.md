@@ -9,15 +9,15 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/2rpm67huf1nh98d0?svg=true)][appveyor]
 [![Code Climate](https://codeclimate.com/github/piotrmurach/tty-which/badges/gpa.svg)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-which/badge.svg?branch=master)][coveralls]
-[![Inline docs](http://inch-ci.org/github/piotrmurach/tty-which.svg?branch=master)][inchpages]
+[![Inline docs](https://inch-ci.org/github/piotrmurach/tty-which.svg?branch=master)][inchpages]
 
 [gitter]: https://gitter.im/piotrmurach/tty
-[gem]: http://badge.fury.io/rb/tty-which
+[gem]: https://badge.fury.io/rb/tty-which
 [gh_actions_ci]: https://github.com/piotrmurach/tty-which/actions?query=workflow%3ACI
 [appveyor]: https://ci.appveyor.com/project/piotrmurach/tty-which
 [codeclimate]: https://codeclimate.com/github/piotrmurach/tty-which
 [coveralls]: https://coveralls.io/github/piotrmurach/tty-which
-[inchpages]: http://inch-ci.org/github/piotrmurach/tty-which
+[inchpages]: https://inch-ci.org/github/piotrmurach/tty-which
 
 > Platform independent implementation of Unix `which` utility that searches for executable file in the path variable.
 
