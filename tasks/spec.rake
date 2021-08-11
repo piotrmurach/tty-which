@@ -18,8 +18,12 @@ begin
     RSpec::Core::RakeTask.new(:integration) do |task|
       task.pattern = "spec/integration{,/*/**}/*_spec.rb"
     end
-  end
 
+    desc "Run performance specs"
+    RSpec::Core::RakeTask.new(:perf) do |task|
+      task.pattern = "spec/perf{,/*/**}/*_spec.rb"
+    end
+  end
 rescue LoadError
   %w[spec spec:unit spec:integration].each do |name|
     task name do
